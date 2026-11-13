@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <title>Вырезать звук | Мультимедиа Инструменты</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="background.html">Удаление фона</a>
+        <a href="audio.html" class="active">Вырезать звук</a>
+        <a href="convert.html">Конвертер</a>
+        <a href="eraser.html">Ретушь</a>
+    </nav>
+
+    <div class="container">
+        <h2>Вырезать звук из видео</h2>
+        <div class="controls">
+            <div class="file-upload-wrapper">
+                <label class="file-upload-button-area">
+                    <input type="file" id="videoInput" accept="video/*">
+                    <span class="file-upload-btn">Выберите файл</span>
+                </label>
+                <span class="file-name-display" id="videoName">Файл не выбран</span>
+            </div>
+            <select id="audioFormat">
+                <option value="m4a" selected>M4A (быстро)</option>
+                <option value="mp3">MP3 (перекодирование)</option>
+            </select>
+            <button id="extractBtn">Вырезать звук</button>
+        </div>
+        <div id="videoStatus" class="status"></div>
+        <div id="videoResult" class="result-area"></div>
+    </div>
+
+    <!-- Важно: type="module" -->
+    <script type="module" src="js/audio.js"></script>
+</body>
+</html>

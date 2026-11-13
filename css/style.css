@@ -1,0 +1,342 @@
+/* css/style.css */
+:root {
+    --bg-color: #121212;
+    --surface-color: #1e1e1e;
+    --primary-color: #4caf50;
+    --primary-hover: #45a049;
+    --text-main: #e0e0e0;
+    --text-muted: #9e9e9e;
+    --border-color: #333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* Навигация */
+nav {
+    background-color: var(--surface-color);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    padding: 0.5rem;
+}
+
+nav a:hover, nav a.active {
+    color: var(--primary-color);
+}
+
+/* Основной контейнер */
+.container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Формы и кнопки */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+select, input[type="range"], input[type="color"] {
+    background: var(--bg-color);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Большой отступ только для селектов и слайдеров */
+select, input[type="range"] {
+    padding: 0.8rem;
+}
+
+
+/* Стилизация загрузки файлов */
+.file-upload-wrapper {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+    transition: border-color 0.3s ease;
+}
+
+/* Обертка для кнопки */
+.file-upload-button-area {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Прячем стандартный инпут, растягивая его на весь контейнер */
+.file-upload-wrapper input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Текст "Выберите файл" — акцентный зеленый текст */
+.file-upload-btn {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+    background-color: var(--surface-color);
+}
+
+/* Подсветка кнопки при наведении именно на неё */
+.file-upload-button-area:hover .file-upload-btn {
+    background-color: rgba(76, 175, 80, 0.15);
+}
+
+/* Имя файла */
+.file-name-display {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    padding-left: 0.5rem;
+}
+
+/* Общие стили для кнопок и ссылок-кнопок */
+button, .btn-download {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    text-decoration: none; /* Убирает подчеркивание у ссылок */
+    text-align: center;
+    
+}
+
+/* Эффект при наведении */
+button:hover:not(:disabled), .btn-download:hover {
+    background-color: var(--primary-hover);
+    color: white;
+}
+
+/* Стили для отключенной кнопки */
+button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+#status, .status {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    min-height: 1.5rem;
+}
+
+/* Результаты */
+.result-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.result-area img {
+    max-width: 100%;
+    max-height: 400px;
+}
+
+/* Специфично для ластика */
+
+/* Настройка ползунка кисти */
+.brush-size-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-main);
+}
+
+/* Блок инструментов цвета (по умолчанию скрыт, JS будет показывать) */
+#colorTools {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.picker-btn {
+    background-color: var(--bg-color); 
+    border: 1px solid var(--border-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.picker-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+/* Обертка для кастомного квадратика цвета */
+#customColorWrapper {
+    position: relative;
+    width: 50px;
+    height: 42px;
+    border-radius: 6px;
+    background-color: var(--bg-color); 
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+}
+
+/* Сам инпут цвета */
+#customColorWrapper input[type="color"] {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Убираем лишние отступы для всех остальных инпутов цвета (если где-то еще есть) */
+input[type="color"] {
+    padding: 0;
+    border: none;
+}
+
+/* Центрирование холста */
+.canvas-wrapper {
+    text-align: center;
+}
+
+#canvasContainer {
+    margin: 0 auto;
+    position: relative;
+    display: inline-block;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+#eraserCanvas {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    display: block;
+}
+
+#checkerboard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: linear-gradient(45deg, #2a2a2a 25%, transparent 25%), linear-gradient(-45deg, #2a2a2a 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #2a2a2a 75%), linear-gradient(-45deg, transparent 75%, #2a2a2a 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+#brushCursor {
+    position: absolute;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10;
+    display: none;
+    box-shadow: 0 0 2px #000;
+}
+
+/* Главная страница */
+.hero {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.feature-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}

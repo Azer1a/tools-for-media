@@ -1,0 +1,24 @@
+# Зависимости Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Переменные окружения (если появятся)
+.env
+.env.local
+
+# Системные файлы ОС
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Файлы IDE (VS Code)
+.vscode/
+*.code-workspace
+
+# Тяжелые файлы (модели и FFmpeg)
+# public/
+
+# Временные файлы
+*.tmp
+*.log
